@@ -6,7 +6,165 @@
 /*   By: cintia <cintia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 18:14:06 by cintia            #+#    #+#             */
-/*   Updated: 2026/02/18 18:14:17 by cintia           ###   ########.fr       */
+/*   Updated: 2026/02/19 20:07:32 by cintia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "push_swap.h"
+
+void parse_args(int argc, char **argv, t_info *info)
+{
+    int i;
+
+    i = 1;
+    while(i < argc)
+    {
+        if(is_flag(argv[i], info))
+        {
+            // tenemos que actualizar el atributo de info -> flag bench
+        }
+        if(is_valid_number(argv[i]))
+        {
+            // lo metemos en la pila
+            process_number(argv[i], info);
+        }
+        else
+        {
+            // error
+            write(2, "Error\n", 6);
+            // liberamos toda la memoria asignada
+        }
+        i++;
+    }
+}
+
+int is_flag(char *arg, t_info *info)
+{
+    // Aquí usarás tu ft_strncmp o similar.
+    // Si es "--bench", info->flag_bench = 1; return 1;
+    // Si es "--simple", info->strategy = SIMPLE; return 1;
+    // Si no es ninguna flag, return 0;
+    if(ft_strncmp(arg, "--bench", 8) == 0)
+        info->bench = 1;
+    else if(ft_strncmp(arg, "--adaptive", 11) == 0)
+        info->strategy = ADAPTIVE;
+    else if(ft_strncmp(arg, "--simple", 9) == 0)
+        info->strategy = SIMPLE;
+    else if(ft_strncmp(arg, "--medium", 9) == 0)
+        info->strategy = MEDIUM;
+    else if(ft_strncmp(arg, "--complex", 10) == 0)
+            info->strategy = COMPLEX;
+    else    
+        return 0;
+    return 1;
+}
+
+
+int is_valid_number(char *arg)
+{
+    // Bucle para ver si str[i] es '-' o '+' solo en i == 0
+    // Y que el resto sean dígitos ('0' a '9')
+    // Si hay letras o está vacío, return 0;
+    // Si todo va bien, return 1;
+    int i;
+
+    i = 0;
+    if(arg[i] == '-' || arg[i] == '+')
+        i++;
+    if(arg[i] == '\0')
+        return (0);
+    while ((arg[i]))
+    {
+        if(!ft_isdigit(arg[i]))
+            return (0);
+        i++;
+    }
+    return (1);
+}
+
+void process_number(char *str, t_info *info)
+{
+    // convertir en int
+    // añadir a la pila A
+    long    num;
+
+    num = ft_atol(str);
+    if (num > 2147483647 || num < -2147483648)
+        error_exit(info);
+    // vamos a ver si hay duplicados.
+    if(check_dup(info->a, (int)num))
+        error_exit(info);
+    append_node(info->a, (int) num);
+}
+
+void error_exit(t_info *info)
+{
+    write(2, "Error\n", 6);
+    if(info)
+    {
+        if(info->a)
+            free_stack(info->a);
+        if(info->b)
+            free_stack(info->b)
+    }
+    exit(1);
+}
+
+void free_stack(t_stack *stack)
+{
+    t_node *curr;
+    t_node *next_node;
+
+    if(!stack)
+        return ;
+    curr = stack->top;
+    while (curr != NULL)
+    {
+        next_node = curr->next;
+        free(curr);
+        curr = next_node;
+    }
+    free(stack);
+}
+
+int check_dup(t_stack *a, int num)
+{
+    t_node *curr;
+    
+    curr = a->top;
+    while(curr != NULL)
+    {
+        if(curr->value == num)
+            return 1;
+        curr = curr->next;
+    }
+    return 0;
+}
+
+void append_node(t_info *info, int num)
+{
+    t_node *to_append;
+   
+    to_append = malloc(sizeof(t_node));
+    if(!to_append)
+        error_exit(info);
+    to_append->prev = NULL; 
+    to_append->next = NULL;
+    to_append->value = num;
+
+    // si la cola está vacía, top == NULL
+    if(info->a->top == NULL)
+    {
+        info->a->top = to_append;
+        info->a->bottom = to_append;
+    }
+    else
+    {
+        // coloco after bottom ;P
+        info->a->bottom->next = to_append;
+        to_append->prev = info->a->bottom;
+        info->a->bottom = to_append;
+    }
+    info->a->size++;
+}
 
