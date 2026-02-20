@@ -6,7 +6,7 @@
 /*   By: cintia <cintia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 18:14:06 by cintia            #+#    #+#             */
-/*   Updated: 2026/02/20 09:12:39 by cintia           ###   ########.fr       */
+/*   Updated: 2026/02/20 17:22:39 by cintia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,26 +144,27 @@ int check_dup(t_stack *a, int num)
 void append_node(t_info *info, int num)
 {
     t_node *to_append;
+    t_node *last;
    
     to_append = malloc(sizeof(t_node));
     if(!to_append)
         error_exit(info);
-    to_append->prev = NULL; 
-    to_append->next = NULL;
     to_append->value = num;
-
-    // si la cola está vacía, top == NULL
     if(info->a->top == NULL)
     {
         info->a->top = to_append;
-        info->a->bottom = to_append;
+        to_append->next = to_append;
+        to_append->prev = to_append;
     }
     else
     {
-        // coloco after bottom ;P
-        info->a->bottom->next = to_append;
-        to_append->prev = info->a->bottom;
-        info->a->bottom = to_append;
+        last = info->a->top->prev;
+
+        to_append->next = info->a->top;
+        to_append->prev = last;
+
+        last->next = to_append;
+        info->a->top->prev = to_append;
     }
     info->a->size++;
 }
