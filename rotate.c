@@ -5,27 +5,45 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cintia <cintia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/18 18:16:41 by cintia            #+#    #+#             */
-/*   Updated: 2026/02/20 10:49:47 by cintia           ###   ########.fr       */
+/*   Created: 2026/02/20 16:59:22 by cintia            #+#    #+#             */
+/*   Updated: 2026/02/20 17:00:29 by cintia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
+//Shift up all elements of stack a by one. The first element becomes the last one.
 void    ra(t_info *info)
 {
-    // TODO
+    if(!info->a || info->a->size < 2)
+        return ;
+    info->a->top = info->a->top->next;
+    info->ops[2]++;
+    write(1, "ra\n", 3);
 }
 
 void    rb(t_info *info)
 {
-    // TODO
-
+    if(!info->b || info->b->size < 2)
+        return ;
+    info->b->top = info->b->top->next;
+    write(1, "rb\n", 3);
+    info->ops[3]++;
 }
 
 void    rr(t_info *info)
 {
-        // TODO
-
+    // si hago esto me está sumando por cada llamada un ++ a cada op e imprime 3 veces
+    // rb(info);
+    // ra(info);
+    // write(1, "rr\n", 3);
+    // info->ops[4]++;
+    if(!info->a || info->a->size < 2)
+        return ;
+    info->a->top = info->a->top->prev;
+     if(!info->b || info->b->size < 2)
+        return ;
+    info->b->top = info->b->top->next;
+    write(1, "rr\n", 3);
+    info->ops[4]++;
 }

@@ -6,7 +6,11 @@
 /*   By: cintia <cintia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 18:15:46 by cintia            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2026/02/20 10:35:44 by cintia           ###   ########.fr       */
+=======
+/*   Updated: 2026/02/20 16:34:02 by cintia           ###   ########.fr       */
+>>>>>>> 3fac858 (recover repository after corruption)
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +72,10 @@ void    sb(t_info *info)
 
 void    ss(t_info *info)
 {
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 3fac858 (recover repository after corruption)
     sa(info);
     sb(info);
     write(1, "ss\n", 3);
