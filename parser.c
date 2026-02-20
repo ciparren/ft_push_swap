@@ -6,7 +6,7 @@
 /*   By: cintia <cintia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 18:14:06 by cintia            #+#    #+#             */
-/*   Updated: 2026/02/19 20:07:32 by cintia           ###   ########.fr       */
+/*   Updated: 2026/02/20 09:12:39 by cintia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void error_exit(t_info *info)
         if(info->a)
             free_stack(info->a);
         if(info->b)
-            free_stack(info->b)
+            free_stack(info->b);
     }
     exit(1);
 }

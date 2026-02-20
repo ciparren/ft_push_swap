@@ -6,7 +6,7 @@
 /*   By: cintia <cintia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 17:44:33 by cintia            #+#    #+#             */
-/*   Updated: 2026/02/19 20:03:01 by cintia           ###   ########.fr       */
+/*   Updated: 2026/02/20 09:52:53 by cintia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ typedef struct s_node
 typedef struct s_stack
 {
     t_node  *top; // como si fuese mi head
-    t_node  *bottom;
     int     size;
 } t_stack;
 
@@ -48,9 +47,9 @@ typedef struct s_info
 {
     t_stack *a; // declaro mi pila a
     t_stack *b; // declaro mi pila b
-    int     ops[11]; /* Para contar sa, sb, pa, pb, etc. en --bench */
-    int     total_ops;
-    float   disorder;
+    int     ops[11];  /*pa, pb, ra, rb, rr, sa, sb, ss, rra, rrb, rrr,  */
+    int     total_ops;// 0  1    2   3   4   5   6  7    8    9    10 
+    float   disorder;  
     int     bench;    /* Indica si --bench está activo */
     int     strategy; // estrategia elegida, simple, medium, complex, adaptive...
 }   t_info;

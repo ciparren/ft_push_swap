@@ -6,7 +6,13 @@
 /*   By: cintia <cintia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 18:17:10 by cintia            #+#    #+#             */
-/*   Updated: 2026/02/18 18:17:11 by cintia           ###   ########.fr       */
+/*   Updated: 2026/02/20 09:11:53 by cintia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
+
+
+void    rra(t_info *info);
+void    rrb(t_info *info);
+void    rrr(t_info *info);
