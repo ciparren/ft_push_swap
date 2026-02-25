@@ -14,7 +14,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
 NAME = push_swap_test
-SRCS = main.c swap.c simple.c parser.c utils.c
+SRCS = main.c swap.c simple.c parser.c utils.c rotate.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
