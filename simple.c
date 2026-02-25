@@ -17,26 +17,34 @@
  {
    int swap;
    int i;
-   int tmp;
+   t_node *curr;
    int   j;
 
-   swap = 1;
-   i = 0;
-   j = info->a->size - 1;
+   if(!info || !info->a || info->a->size < 2)
+      return ;
 
-    while(i < (info->a->size - 1) && swap)
-    {
+   i = 0;
+   curr = NULL;
+   while(i < info->a->size - 1)
+   {
       swap = 0;
-      while(j > i )
+      curr = info->a->top;
+      printf("Valor de curr: %d\n", curr->value);
+      j = 0;
+      while(j < (info->a->size - 1 - i))
       {
-         if(info->a->top->value)
+         if(curr->value > curr->next->value)
          {
             sa(info);
+            printf("Cambiando: %d por %d\n", curr->value, nex->value);
             swap = 1;
          }
-         j--;         
+         else
+            curr = curr->next;
+         j++;         
       }
-      if(swap)
-         i++;
-    }
+      if(!swap)
+         break;
+      i++;
+   }
  }

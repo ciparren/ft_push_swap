@@ -94,7 +94,7 @@ void process_number(char *str, t_info *info)
     // vamos a ver si hay duplicados.
     if(check_dup(info->a, (int)num))
         error_exit(info);
-    append_node(info->a, (int) num);
+    append_node(info, (int) num);
 }
 
 void error_exit(t_info *info)

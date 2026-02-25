@@ -19,7 +19,7 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <stddef.h>
+#include <stdio.h>
 
 // DEFINICIÓN DE ESTRATEGIAS
 # define ADAPTIVE 0
@@ -80,6 +80,7 @@ void process_number(char *str, t_info *info);
 int is_valid_number(char *arg);
 int is_flag(char *arg, t_info *info);
 void parse_args(int argc, char **argv, t_info *info);
+void free_stack(t_stack *stack);
 
 void    solve_simple(t_info *info);
 void    solve_adaptive(t_info *info);
@@ -90,6 +91,6 @@ void    solve_complex(t_info *info);
 long     ft_atol(const char *nptr);
 int     ft_strncmp(const char *s1, const char *s2, size_t n);
 int     ft_isdigit(int c);
-void bubblesort(t_stack *a);
+void bubblesort(t_info *info);
 
 #endif

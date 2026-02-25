@@ -35,8 +35,8 @@ void    sa(t_info *info)
         first->prev = second;
     }
     info->a->top = second;
-    info->ops[6]++;
-    write(1, "sb\n", 3);
+    info->ops[5]++;
+    write(1, "sa\n", 3);
 }
 
 void    sb(t_info *info)

@@ -12,7 +12,7 @@
 
 # Makefile
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 NAME = push_swap_test
 SRCS = main.c swap.c simple.c parser.c utils.c
 OBJS = $(SRCS:.c=.o)
