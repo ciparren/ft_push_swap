@@ -19,6 +19,7 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stddef.h>
 
 // DEFINICIÓN DE ESTRATEGIAS
 # define ADAPTIVE 0
@@ -80,6 +81,6 @@ void    solve_complex(t_info *info);
 long     ft_atol(const char *nptr);
 int     ft_strncmp(const char *s1, const char *s2, size_t n);
 int     ft_isdigit(int c);
-
+void bubblesort(t_stack *a);
 
 #endif

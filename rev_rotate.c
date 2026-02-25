@@ -10,14 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "push_swap.h"
 
-
-void    rra(t_info *info);
-void    rrb(t_info *info);
-void    rrr(t_info *info);
 void    rra(t_info *info)
 {
     if(!info->a || info->a->size < 2)
@@ -46,5 +40,4 @@ void    rrr(t_info *info)
         return ;
     info->b->top = info->b->top->prev;
         write(1, "rrr\n", 3);
-
 }
