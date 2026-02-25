@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cintia <cintia@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ciparren <ciparren@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/18 18:15:46 by cintia            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2026/02/20 10:35:44 by cintia           ###   ########.fr       */
-=======
-/*   Updated: 2026/02/20 16:34:02 by cintia           ###   ########.fr       */
->>>>>>> 3fac858 (recover repository after corruption)
+/*   Created: 2026/02/25 13:04:32 by ciparren          #+#    #+#             */
+/*   Updated: 2026/02/25 13:04:38 by ciparren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +68,6 @@ void    sb(t_info *info)
 
 void    ss(t_info *info)
 {
-<<<<<<< HEAD
-=======
-    
->>>>>>> 3fac858 (recover repository after corruption)
     sa(info);
     sb(info);
     write(1, "ss\n", 3);

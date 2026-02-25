@@ -10,6 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
+
 // los argumentos que recibo son:
     // una pila a formateada como una lista de enteros
     // un parámetro opcional de selector de algoritmo(simple, medium, complex, adaptative)
+

@@ -13,32 +13,30 @@
 #include "push_swap.h"
 
 
-
-void ordenar(t_stack &a) {
-    bool inter = true;
-    int i = 0; int tmp;
-    while ((i < lista.cont - 1) && inter) {
-        inter = false;
-        for (int j = lista.cont - 1; j > i; j--)
-            if (lista.elems[j] < lista.elems[j - 1]) {
-                tmp = lista.elems[j];
-                lista.elems[j] = lista.elems[j - 1];
-                lista.elems[j - 1] = tmp;
-                inter = true;
-            }
-        if (inter)
-            i++;
-        }
- }
-
- void bubblesort (t_stack *a)
+ void bubblesort (t_info *info)
  {
-    int swap;
-    int i;
-    int tmp;
+   int swap;
+   int i;
+   int tmp;
+   int   j;
 
-    swap = 0;
-    i = 0;
+   swap = 1;
+   i = 0;
+   j = info->a->size - 1;
 
-    while(i < (a->size - 1) )
+    while(i < (info->a->size - 1) && swap)
+    {
+      swap = 0;
+      while(j > i )
+      {
+         if(info->a->top->value)
+         {
+            sa(info);
+            swap = 1;
+         }
+         j--;         
+      }
+      if(swap)
+         i++;
+    }
  }
