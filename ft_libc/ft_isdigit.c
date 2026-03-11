@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   medium.c                                           :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ciparren <ciparren@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: gamercha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/18 18:17:47 by cintia            #+#    #+#             */
-/*   Updated: 2026/03/07 11:07:59 by ciparren         ###   ########.fr       */
+/*   Created: 2026/01/14 19:58:16 by gamercha          #+#    #+#             */
+/*   Updated: 2026/01/14 19:58:20 by gamercha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <ctype.h>
+#include <stdio.h>
 
-#include "push_swap.h"
-
-
-void solve_medium(t_info *info)
+int	ft_isdigit(int i)
 {
-
+	if (i >= 48 && i <= 57)
+		return (1);
+	else
+		return (0);
 }
-
-void chunk_sort(t_info *info)
-{
-    
-}
+// int main ()
+// {
+//         printf("%i\n", ft_isdigit('a'));
+//         printf("%i\n", isdigit('d'));
+// }
