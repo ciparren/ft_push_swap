@@ -12,6 +12,8 @@
 
 #include "push_swap.h"
 
+
+ //TODO PARSEAR SI LA PILA B ESTÁ VACÍA.
 void parse_args(int argc, char **argv, t_info *info)
 {
     int i;
@@ -169,3 +171,26 @@ void append_node(t_info *info, int num)
     info->a->size++;
 }
 
+void insert_index(t_info *info)
+{
+    t_node *current;
+    int idx;
+    t_node *buf;
+
+    buf = info->a->top->next;
+    current = info->a->top;//el que utilizo para comparar
+    while (info->a->top->value != buf->value)
+    {
+        idx = 0;
+        while (current->value =! buf->value)
+        {
+            if (current->value > buf->next->value)
+                idx++;
+            buf = buf->next;
+        }
+        current->index = idx;
+        current = current->next;
+        buf = current->next;
+    }
+
+}
