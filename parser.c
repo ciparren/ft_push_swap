@@ -169,3 +169,9 @@ void append_node(t_info *info, int num)
     info->a->size++;
 }
 
+void assign_index(t_info *info)
+{
+    
+
+}
+
