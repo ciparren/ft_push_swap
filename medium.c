@@ -6,7 +6,7 @@
 /*   By: ciparren <ciparren@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 18:17:47 by cintia            #+#    #+#             */
-/*   Updated: 2026/03/07 11:07:59 by ciparren         ###   ########.fr       */
+/*   Updated: 2026/03/13 11:18:50 by ciparren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,53 +15,35 @@
 
 void solve_medium(t_info *info)
 {
-    // O(n√n)
-    // chunk sorting
+    chunksort(info);
 }
 
 void chunksort(t_info *info)
 {
     int chunk; // redondeaos abajo, más sencillo, ara calcular los trozos que vamos a usar
-    int last;
+    int curr_chunk;
     // ahora hay que ir cogiendo esos chunks hasta llegar a size completo de a e ir pasando a la pila B.
     int max;
-    int height;
-    t_node *curr;
-
-    //chunk  = raíz de info->a->size;
+    int i;
+    
+    if(!info->a || info->a->size < 2)
+        return ;
     chunk = calc_root(info->a->size);
-    last = chunk;
-    height = 0;
-    while(last < info->a->size)
+    if(chunk == 0)
+        chunk = 1;
+    while(info->a->size > 0)
     {
-        if(info->a->top->index < last)
+        if(info->a->top->index < curr_chunk * chunk)
             pb(info);
         else
             ra(info);
-        last += chunk;
-    }
-    curr = info->b->top;
-    max = curr->index;
-    while (max != (info->b->size - 1) && curr != info->b->top)
-    {
-        curr = curr->next;
-        max = curr->index;
-        height++;
-    }
-    if(height <= info->b->size / 2)
-    {
-        // vamos rotandoo rotamos hacia arriba
-        rrb(info);
-    }
-    else
-    {
-        // rotamos hacia abajo
-        rb(info);
+        if(info->a->size > 0 && info->a->top->index >= curr_chunk * chunk)
+            curr_chunk++;
     }
 }
 
 // Función para calcular la raíz cuadrada entera
-long long calc_root(long long n) {
+static long long calc_root(long long n) {
 
     long long inicio;
     long long fin; 
@@ -89,4 +71,58 @@ long long calc_root(long long n) {
         }
     }
     return ans;
+}
+
+static int find_max(t_stack *b)
+{
+    t_node *curr;
+    int max_value;
+    int max_pos;
+    int i;
+
+    if(!b || b->size == 0)
+        return (-1);
+    curr = b->top;
+    max_value = curr->index;
+    max_pos = 0;
+    i = 0;
+
+    while(i < b->size)
+    {
+        if(curr->index > max_value)
+        {
+            max_value = curr->index;
+            max_pos = i;
+        }
+        curr = curr->next;
+        i++;
+    }
+    return (max_pos);
+}
+
+static void rot_max(t_info *info, int max_pos)
+{
+    int size;
+    int i;
+
+    size = info->b->size;
+
+    if(max_pos <= size / 2)
+    {
+        i = 0;
+        while(i < max_pos)
+        {
+            rb(info);
+            i++;
+        }
+    }
+    else
+    {
+        i = 0;
+        while(i < size - max_pos)
+        {
+            rrb(info);
+            i++;
+        }
+    }
 }

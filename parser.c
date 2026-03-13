@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cintia <cintia@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ciparren <ciparren@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 18:14:06 by cintia            #+#    #+#             */
-/*   Updated: 2026/02/20 17:22:39 by cintia           ###   ########.fr       */
+/*   Updated: 2026/03/13 11:24:18 by ciparren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
+ // TODO parsear si viene una parte de la pila entre comillas, ejemplo: "2 13 4 56 1" 4 3 2
  //TODO PARSEAR SI LA PILA B ESTÁ VACÍA.
 void parse_args(int argc, char **argv, t_info *info)
 {
@@ -174,23 +174,30 @@ void append_node(t_info *info, int num)
 void insert_index(t_info *info)
 {
     t_node *current;
+    t_node *cmp;
     int idx;
-    t_node *buf;
+    int i;
+    int j;
 
-    buf = info->a->top->next;
-    current = info->a->top;//el que utilizo para comparar
-    while (info->a->top->value != buf->value)
+    if(!info->a || info->a->size == 0)
+        return ;
+    current = info->a->top;
+    i = 0;
+    while (i < info->a->size)
     {
         idx = 0;
-        while (current->value =! buf->value)
+        cmp = info->a->top;
+        j = 0;
+        while (j < info->a->size)
         {
-            if (current->value > buf->next->value)
+            if (cmp->value < current->value)
                 idx++;
-            buf = buf->next;
+            cmp = cmp->next;
+            j++;
         }
         current->index = idx;
         current = current->next;
-        buf = current->next;
+        i++;
     }
-
 }
+

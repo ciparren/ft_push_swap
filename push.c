@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cintia <cintia@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ciparren <ciparren@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 18:15:36 by cintia            #+#    #+#             */
-/*   Updated: 2026/02/20 11:30:59 by cintia           ###   ########.fr       */
+/*   Updated: 2026/03/13 09:46:01 by ciparren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ t_node *pop_node(t_stack *stack)
     return (to_pop);
 }
 
-t_node *push_node(t_stack *stack, t_node *new_node)
+void *push_node(t_stack *stack, t_node *new_node)
 {
     t_node *last;
 

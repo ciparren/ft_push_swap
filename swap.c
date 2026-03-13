@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ciparren <ciparren@student.42madrid.c      +#+  +:+       +#+        */
+/*   By: ciparren <ciparren@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 13:04:32 by ciparren          #+#    #+#             */
-/*   Updated: 2026/02/25 13:04:38 by ciparren         ###   ########.fr       */
+/*   Updated: 2026/03/13 09:55:51 by ciparren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void    sb(t_info *info)
         first->next = third;
         second->next = first;
         first->prev = second;
-    }
+    }   
     info->b->top = second;
     info->ops[6]++;
     write(1, "sb\n", 3);
@@ -72,4 +72,5 @@ void    ss(t_info *info)
     sb(info);
     write(1, "ss\n", 3);
     info->ops[7]++;
+    // TODO ahora mismo imprime: sa, sb, ss.
 }

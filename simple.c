@@ -6,7 +6,7 @@
 /*   By: ciparren <ciparren@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 17:03:26 by cintia            #+#    #+#             */
-/*   Updated: 2026/03/07 11:07:47 by ciparren         ###   ########.fr       */
+/*   Updated: 2026/03/13 10:54:57 by ciparren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void solve_simple(t_info *info)
     // Puede ser bubblesort u otro algoritmo simple
 }
 
+// TODO hacer un algoritmo que resuelva cuando tiene solo 2, 3 y 5 números la pila
+
 
 void bubblesort(t_info *info)
 {
@@ -28,11 +30,11 @@ void bubblesort(t_info *info)
     if (!info->a || info->a->size < 2)
         return ;
     i = 0;
-    while (i < info->a->size)
+    while (i < info->a->size - 1)
     {
         swap = 0;
         j = 0;
-        while (j < info->a->size - 1)
+        while (j < info->a->size - 1 - i) // no tenía el - i
         {
             if (info->a->top->value > info->a->top->next->value)
             {
